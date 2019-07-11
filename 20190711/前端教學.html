@@ -1,0 +1,77 @@
+<html>
+
+<head>
+    <title>my title</title>
+</head>
+<style>
+    .test1 {
+        height: 50px;
+        width: 500px;
+        background-color: cornsilk;
+        margin-left: 50px
+    }
+
+    .test2 {
+        background-color: #454545
+    }
+</style>
+
+<body>
+    <nav>
+
+        <a href="#div1">HTML</a> |
+        <a href="#div2">CSS</a> |
+        <a href="/js/">JavaScript</a> |
+        <a href="/jquery/">jQuery</a>
+    </nav>
+    <div id="div1" style="height: 500px;width:500px;background-color: cornsilk;margin-left: 50px">div area</div>
+    <div id="div2" class="test2"> div2 area</div>
+    <div id="div3" class="test1"> div2 area</div>
+    <div id="div4" class="test2"> div2 area</div>
+
+
+    <iframe src="https://hackmd.io/jfzNzrAdSmyK8h6DQIx_Pw?both" height="300" width="500"></iframe>
+    <div>
+        lat:<input type="text" id="lat_input" style=""></input>ex: 24.804302 <br>
+        lng:<input type="text" id="lng_input"></input>ex: 120.966705 <br>
+        搜尋範圍:<input type="text" id="radius"></input>ex: 500~1000 <br><!--password-->
+        sortby: <input type="text" id="sortby"></input>ex: sort by 1, 2 <br>
+       
+       
+       
+        <input type="button" id="btn_click" value="click me"></input>
+    </div>
+
+    <div id="output_div">
+    </div>
+
+
+</body>
+<!--javascript部分-->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function () {
+        $("#btn_click").click(function () {
+            var lat = $("#lat_input").val();
+            var lng = $("#lng_input").val();
+            var radius = $("#radius").val();
+            var sortby = $("#sortby").val();
+
+            $.ajax({
+                url: "http://moea.datarget.com.tw/hsinchuSmartBusiness/parking/list?radius=" + radius + "&sortby=" + sortby + "&lat=" + lat + "&lng=" + lng,
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    console.log(data);
+                    $("#output_div").text(JSON.stringify(data.info));
+
+                }
+            });
+
+
+        })
+    });
+
+</script>
+</html>

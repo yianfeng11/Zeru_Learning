@@ -1,0 +1,84 @@
+<html>
+    <head>
+        <title>
+            0711 learning
+        </title>
+
+        <style>
+            .firststyle{
+                background-color: #ffb9b9;
+                height: 100px;
+                margin-left: 10px;
+            }
+
+            .secondstyle{
+                background-color: gold;
+                margin-left: 10%
+            }
+        </style>
+
+
+
+    </head>
+    <body>
+        <div style="background-color: #556673">first div</div> 
+        <div style="background-color: darkcyan">first div</div> 
+
+        <div class="firststyle">1111</div>
+        <div class="firststyle">1111</div>
+        <div class="firststyle">1111</div>
+        <div class="secondstyle">1111</div>
+        <div class="secondstyle">1111</div>
+
+
+        <h1>h1 tag</h1>
+
+        <h2>h2 tag</h2>
+
+        <h3>h3 tag</h3>
+
+       
+        <iframe height="500" width="800" src="https://hackmd.io/jfzNzrAdSmyK8h6DQIx_Pw?view"></iframe>
+        <div>
+                lat:<input type="text" id="lat_input" style=""></input>ex: 24.804302 <br>
+                lng:<input type="text" id="lng_input"></input>ex: 120.966705 <br>
+                搜尋範圍:<input type="text" id="radius"></input>ex: 500~1000 <br><!--password-->
+                sortby: <input type="text" id="sortby"></input>ex: sort by 1, 2 <br>
+               
+               
+               
+                <input type="button" id="btn_click" value="click me"></input>
+            </div>
+    
+    
+    
+    
+    </body>
+    <!--javascript部分-->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+            $("#btn_click").click(function () {
+            var lat = $("#lat_input").val();
+            var lng = $("#lng_input").val();
+            var radius = $("#radius").val();
+            var sortby = $("#sortby").val();
+
+            $.ajax({
+                url: "http://moea.datarget.com.tw/hsinchuSmartBusiness/parking/list?radius=" + radius + "&sortby=" + sortby + "&lat=" + lat + "&lng=" + lng,
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    console.log(data);
+                    $("#output_div").text(JSON.stringify(data.info));
+
+             }
+         });
+
+
+      })
+    });
+
+    </script>
+</html>

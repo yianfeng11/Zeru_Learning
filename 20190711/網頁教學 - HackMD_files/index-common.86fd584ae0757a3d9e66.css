@@ -1,0 +1,62 @@
+.profile-card {
+  width: 100%;
+  padding: 10px 5px; }
+  .profile-card .profile-card-name {
+    color: #333333;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 18px;
+    text-decoration: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+    vertical-align: sub; }
+  .profile-card .profile-card-info {
+    margin-left: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; }
+  .profile-card .profile-card-name:hover {
+    color: #337AB7; }
+  .profile-card .profile-card-photo {
+    height: fit-content;
+    padding-top: 3px;
+    text-decoration: none; }
+  .profile-card .profile-card-username {
+    font-size: 12px;
+    line-height: 15px;
+    color: #888888;
+    overflow: hidden;
+    text-overflow: ellipsis; }
+  .profile-card .profile-card-description {
+    font-size: 14px;
+    line-height: 20px;
+    word-break: break-word;
+    color: #888888;
+    margin-top: 10px;
+    white-space: normal; }
+  .profile-card .profile-settings {
+    display: block;
+    text-align: center;
+    margin: 0 -21px -21px -21px;
+    padding-top: 10px;
+    font-size: 15px;
+    padding-bottom: 10px;
+    border-top: #D9D9D9 1px solid;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    color: #337ab7;
+    text-decoration: none; }
+  .profile-card .profile-settings:hover {
+    background-color: #337AB7;
+    color: white; }
+  .profile-card .ui-avatar {
+    display: inline-block;
+    overflow: hidden;
+    line-height: 1;
+    vertical-align: middle;
+    border-radius: 3px;
+    object-fit: cover; }
+  .profile-card .ui-avatar.circle {
+    border-radius: 50%; }
+

@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<title>Quick Start - Leaflet</title>
+
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js" integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og==" crossorigin=""></script>
+
+
+	
+</head>
+<body>
+
+
+
+<div id="mapid" style="width: 800px; height: 800px;"></div>
+<script>
+    var data = [{"name_zh": "\u677e\u5c71\u8fb2\u6703", "lat": "25.050203", "lng": "121.57479"}, {"name_zh": "\u9802\u597d\u5e02\u5834", "lat": "25.0416948578606", "lng": "121.546693508012"}, {"name_zh": "\u6377\u904b\u5fe0\u5b5d\u5fa9\u8208\u7ad9", "lat": "25.04177", "lng": "121.542636"}, {"name_zh": "\u81fa\u5317\u79d1\u6280\u5927\u5b78(\u5fe0\u5b5d)", "lat": "25.042212", "lng": "121.534512"}, {"name_zh": "\u5fe0\u5b5d\u570b\u5c0f", "lat": "25.042857", "lng": "121.53106"}, {"name_zh": "\u83ef\u5c71\u6587\u5275\u5712\u5340", "lat": "25.043925", "lng": "121.527413"}, {"name_zh": "\u6377\u904b\u5584\u5c0e\u5bfa\u7ad9", "lat": "25.045023", "lng": "121.522798"}, {"name_zh": "\u81fa\u5317\u8eca\u7ad9(\u5fe0\u5b5d)", "lat": "25.0465305784296", "lng": "121.51652326089"}, {"name_zh": "\u81fa\u5317\u8eca\u7ad9(\u91cd\u6176)", "lat": "25.0465655988455", "lng": "121.513205815407"}, {"name_zh": "\u535a\u7269\u9928(\u9928\u524d)", "lat": "25.0441772424518", "lng": "121.515057344159"}, {"name_zh": "\u81fa\u5317\u8eca\u7ad9(\u5fe0\u5b5d)", "lat": "25.0462559043502", "lng": "121.51700353811"}, {"name_zh": "\u6377\u904b\u5584\u5c0e\u5bfa\u7ad9", "lat": "25.044844", "lng": "121.522629"}, {"name_zh": "\u83ef\u5c71\u6587\u5275\u5712\u5340", "lat": "25.044024", "lng": "121.526233"}, {"name_zh": "\u5fe0\u5b5d\u570b\u5c0f", "lat": "25.04298", "lng": "121.530315"}, {"name_zh": "\u6b63\u7fa9\u90f5\u5c40", "lat": "25.041615", "lng": "121.538418"}, {"name_zh": "\u61f7\u751f\u570b\u4e2d", "lat": "25.04165", "lng": "121.54078"}, {"name_zh": "\u6377\u904b\u5fe0\u5b5d\u5fa9\u8208\u7ad9", "lat": "25.041572", "lng": "121.542027"}, {"name_zh": "\u4e2d\u83ef\u8cd3\u58eb", "lat": "25.053562", "lng": "121.589965"}, {"name_zh": "\u5357\u6e2f\u8def\u4e09\u6bb5", "lat": "25.05321", "lng": "121.587817"}, {"name_zh": "\u7389\u6210\u91cc", "lat": "25.05145886969037", "lng": "121.58097982428444"}, {"name_zh": "\u677e\u5c71\u8eca\u7ad9(\u516b\u5fb7)", "lat": "25.050039806964044", "lng": "121.57743930838478"}, {"name_zh": "\u57fa\u9686\u8def\u53e3", "lat": "25.049347", "lng": "121.568338"}, {"name_zh": "\u65b0\u805a\u91cc", "lat": "25.049005", "lng": "121.566573"}, {"name_zh": "\u4eac\u83ef\u57ce", "lat": "25.048922", "lng": "121.563393"}, {"name_zh": "\u5149\u5fa9\u8def\u53e3", "lat": "25.048248", "lng": "121.556795"}, {"name_zh": "\u7f8e\u4ec1\u91cc", "lat": "25.048107", "lng": "121.55381"}, {"name_zh": "\u81fa\u8996", "lat": "25.048368", "lng": "121.550268"}, {"name_zh": "\u5357\u6e2f\u9ad8\u5de5", "lat": "25.05501", "lng": "121.609948"}, {"name_zh": "\u5357\u6e2f\u884c\u653f\u4e2d\u5fc3", "lat": "25.054487", "lng": "121.606667"}, {"name_zh": "\u53f0\u80a5\u65b0\u6751", "lat": "25.053937", "lng": "121.603592"}, {"name_zh": "\u5357\u6e2f\u8f2a\u80ce", "lat": "25.053483", "lng": "121.600607"}, {"name_zh": "\u6771\u660e\u91cc", "lat": "25.053913", "lng": "121.598622"}, {"name_zh": "\u7389\u6210\u570b\u5c0f", "lat": "25.054545", "lng": "121.592905"}, {"name_zh": "\u6c50\u6b62", "lat": "25.0691766561076", "lng": "121.661689061306"}, {"name_zh": "\u5357\u6a1f\u6a39\u7063", "lat": "25.057745", "lng": "121.634332"}, {"name_zh": "\u5929\u826f\u96fb\u8996\u53f0", "lat": "25.056145", "lng": "121.632107"}, {"name_zh": "\u6a6b\u79d1", "lat": "25.05513", "lng": "121.62136"}, {"name_zh": "\u571f\u5730\u516c\u5edf", "lat": "25.0546", "lng": "121.59552"}, {"name_zh": "\u5e02\u6c11\u6566\u5316\u8def\u53e3", "lat": "25.045173", "lng": "121.548857"}, {"name_zh": "\u9802\u597d\u5e02\u5834", "lat": "25.0414709888816", "lng": "121.546380002806"}, {"name_zh": "\u6377\u904b\u5fe0\u5b5d\u6566\u5316\u7ad9", "lat": "25.042927", "lng": "121.549208"}, {"name_zh": "\u5e02\u6c11\u5927\u9053\u53e3", "lat": "25.04588", "lng": "121.549105"}, {"name_zh": "\u81fa\u8996", "lat": "25.0481637080101", "lng": "121.551053453852"}, {"name_zh": "\u7f8e\u4ec1\u91cc", "lat": "25.04778", "lng": "121.554332"}, {"name_zh": "\u5149\u5fa9\u8def\u53e3", "lat": "25.047847", "lng": "121.556612"}, {"name_zh": "\u81fa\u5317\u5e02\u5340\u76e3\u7406\u6240", "lat": "25.048363258437", "lng": "121.559825171794"}, {"name_zh": "\u4eac\u83ef\u57ce", "lat": "25.048772", "lng": "121.563583"}, {"name_zh": "\u65b0\u805a\u91cc", "lat": "25.048655", "lng": "121.566082"}, {"name_zh": "\u9952\u6cb3\u8857\u89c0\u5149\u591c\u5e02(\u516b\u5fb7)", "lat": "25.0498157007981", "lng": "121.57146542576"}, {"name_zh": "\u677e\u5c71\u8eca\u7ad9(\u516b\u5fb7)", "lat": "25.049985", "lng": "121.577236"}, {"name_zh": "\u7389\u6210\u91cc", "lat": "25.050768", "lng": "121.580803"}, {"name_zh": "\u677e\u5c71\u78da\u5ee0", "lat": "25.052577", "lng": "121.585407"}, {"name_zh": "\u5357\u6e2f\u8def\u4e09\u6bb5", "lat": "25.052897", "lng": "121.588133"}, {"name_zh": "\u4e2d\u83ef\u8cd3\u58eb", "lat": "25.053073", "lng": "121.589817"}, {"name_zh": "\u7389\u6210\u570b\u5c0f", "lat": "25.053987", "lng": "121.592363"}, {"name_zh": "\u571f\u5730\u516c\u5edf", "lat": "25.05419", "lng": "121.596478"}, {"name_zh": "\u5357\u6e2f\u8f2a\u80ce", "lat": "25.053265", "lng": "121.60075"}, {"name_zh": "\u53f0\u80a5\u65b0\u6751", "lat": "25.053605", "lng": "121.603198"}, {"name_zh": "\u5357\u6e2f\u884c\u653f\u4e2d\u5fc3", "lat": "25.054173", "lng": "121.60702"}, {"name_zh": "\u5357\u6e2f\u9ad8\u5de5", "lat": "25.054965", "lng": "121.610928"}, {"name_zh": "\u5357\u6e2f", "lat": "25.055308", "lng": "121.613795"}, {"name_zh": "\u6377\u904b\u5357\u6e2f\u5c55\u89bd\u9928\u7ad9(\u5357\u6e2f\u8def)", "lat": "25.054793", "lng": "121.6182"}, {"name_zh": "\u6a6b\u79d1", "lat": "25.054885", "lng": "121.621518"}, {"name_zh": "\u5bcc\u4fe1\u98ef\u5e97", "lat": "25.055940", "lng": "121.632080"}, {"name_zh": "\u5357\u6a1f\u6a39\u7063", "lat": "25.057753", "lng": "121.635145"}, {"name_zh": "\u6a1f\u6a39\u7063", "lat": "25.059365", "lng": "121.638418"}, {"name_zh": "\u660a\u5929\u5dba", "lat": "25.06223", "lng": "121.645643"}, {"name_zh": "\u6c50\u79d1\u7ad9\u5317\u7ad9", "lat": "25.064702", "lng": "121.653235"}, {"name_zh": "\u6c50\u6b62\u570b\u5c0f", "lat": "25.066433", "lng": "121.654977"}, {"name_zh": "\u6c50\u6b62\u570b\u4e2d", "lat": "25.06746596", "lng": "121.6597901"}, {"name_zh": "\u6c50\u6b62", "lat": "25.06908", "lng": "121.66202"}, {"name_zh": "\u570b\u6cf0\u91ab\u9662", "lat": "25.0716573015275", "lng": "121.664975448666"}, {"name_zh": "\u9109\u9577\u8def\u4e00\u6bb5", "lat": "25.074309", "lng": "121.665167"}, {"name_zh": "\u9109\u9577\u8def\u4e00\u6bb5", "lat": "25.0741682394737", "lng": "121.66504010128"}, {"name_zh": "\u6c50\u6b62\u516c\u5712", "lat": "25.06781", "lng": "121.65992"}, {"name_zh": "\u6c50\u6b62\u570b\u5c0f", "lat": "25.066488", "lng": "121.654683"}, {"name_zh": "\u6c50\u79d1\u7ad9\u5317\u7ad9", "lat": "25.064827", "lng": "121.652965"}, {"name_zh": "\u9060\u6771\u79d1\u6280\u4e2d\u5fc3", "lat": "25.063935", "lng": "121.650612"}, {"name_zh": "\u6c50\u79d1\u7ad9\u5357\u7ad9", "lat": "25.06299944", "lng": "121.6472378"}, {"name_zh": "\u660a\u5929\u5dba", "lat": "25.06213", "lng": "121.645057"}, {"name_zh": "\u806f\u5408\u5831\u7e3d\u90e8", "lat": "25.06105", "lng": "121.642298"}, {"name_zh": "\u6a1f\u6a39\u7063", "lat": "25.059385", "lng": "121.638237"}, {"name_zh": "\u6377\u904b\u5357\u6e2f\u5c55\u89bd\u9928\u7ad9(\u5357\u6e2f\u8def)", "lat": "25.055082", "lng": "121.618395"}, {"name_zh": "\u5357\u6e2f\u5c55\u89bd\u9928", "lat": "25.055447", "lng": "121.61538"}, {"name_zh": "\u5357\u6e2f", "lat": "25.0553944295881", "lng": "121.613658744034"}, {"name_zh": "\u6b63\u7fa9\u90f5\u5c40", "lat": "25.041543", "lng": "121.539247"}, {"name_zh": "\u6771\u660e\u91cc", "lat": "25.0538414991689", "lng": "121.598139533007"}, {"name_zh": "\u81fa\u5317\u5e02\u5340\u76e3\u7406\u6240", "lat": "25.048412", "lng": "121.560463"}, {"name_zh": "\u677e\u5c71\u8fb2\u6703", "lat": "25.050163", "lng": "121.573757"}, {"name_zh": "\u570b\u6cf0\u91ab\u9662", "lat": "25.07167", "lng": "121.66475"}, {"name_zh": "\u677e\u5c71\u78da\u5ee0", "lat": "25.0526", "lng": "121.584625"}, {"name_zh": "\u81fa\u5317\u79d1\u6280\u5927\u5b78(\u5fe0\u5b5d)", "lat": "25.042307", "lng": "121.534148"}, {"name_zh": "\u6c50\u79d1\u7ad9\u5357\u7ad9", "lat": "25.062865", "lng": "121.647495"}, {"name_zh": "\u9952\u6cb3\u8857\u89c0\u5149\u591c\u5e02(\u516b\u5fb7)", "lat": "25.050022", "lng": "121.571582"}, {"name_zh": "\u806f\u5408\u5831\u7e3d\u90e8", "lat": "25.060892", "lng": "121.642363"}, {"name_zh": "\u91cd\u6176\u5357\u8def\u4e00\u6bb5", "lat": "25.044839676533616", "lng": "121.51315569877624"}, {"name_zh": "\u6771\u65b9\u5c71\u6cb3\u793e\u5340", "lat": "25.074753", "lng": "121.6650654"}, {"name_zh": "\u6771\u65b9\u5c71\u6cb3\u793e\u5340", "lat": "25.075009", "lng": "121.66538"}]
+	var mymap = L.map('mapid').setView([25.061176, 121.546339], 13);
+
+	L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+		maxZoom: 18,
+		attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+			'<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+			'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+		id: 'mapbox.streets'
+	}).addTo(mymap);
+
+    for(var i in data){
+        console.log("name_zh="+data[i].name_zh);
+        var name_zh = data[i].name_zh
+        
+		console.log("lat="+data[i].lat+","+"lng="+data[i].lng);
+        var lat = data[i].lat
+        var lng = data[i].lng
+
+        L.marker([lat, lng]).addTo(mymap).bindPopup("<b>"+name_zh+"</b><br />"+lat+","+lng+"<b>");
+
+	
+	
+	}
+
+
+
+
+	var popup = L.popup();
+
+	function onMapClick(e) {
+		popup
+			.setLatLng(e.latlng)
+			.setContent("You clicked the map at " + e.latlng.toString())
+			.openOn(mymap);
+	}
+
+	mymap.on('click', onMapClick);
+
+</script>
+
+
+
+</body>
+</html>
