@@ -1,0 +1,70 @@
+<html>
+
+<head>
+    <tile>my map</tile>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+        integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+        crossorigin="" />
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+        integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+        crossorigin=""></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <style>
+        #mapid {
+            height: 680px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="mapid"></div>
+    <input type="button" id="btn_click" value="search"></input>
+</body>
+
+<script>
+    var mymap = L.map('mapid').setView([24.804310, 120.966152], 13);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(mymap);
+
+    L.marker([24.804310, 120.966152]).addTo(mymap)
+        .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
+        .openPopup();
+
+    var aaa;
+    $(document).ready(function () {
+
+        $("#btn_click").click(function () {
+
+            $.ajax({
+                url: "http://moea.datarget.com.tw/hsinchuSmartBusiness/restaurants/list?radius=5000&sortby=2&lat=24.833179473877&lng=121.01261138916",
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    aaa=data;
+                    for (var i in aaa.info) {
+                        console.log(data.info[i].lat+","+data.info[i].lng)
+                        var lat=data.info[i].lat
+                        var lng=data.info[i].lng
+                        var name=data.info[i].name
+                        addmaker(lat, lng, name)
+                    }
+                }
+            });
+        })
+    })
+
+    var addmaker=function(lat, lng, infowindows){
+        L.marker([lat, lng]).addTo(mymap)
+            .bindPopup("<b>"+infowindows+"</b><br />"+lat+","+lng+"<b>")
+    }
+
+
+
+</script>
+
+</html>
